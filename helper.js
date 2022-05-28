@@ -1,8 +1,14 @@
-export const AJAX = async function (url) {
+export const AJAX = async function (wallet) {
   try {
-    const response = await fetch(url);
+    const options = { method: "GET", headers: { Accept: "application/json" } };
+
+    const url = `https://api.opensea.io/api/v1/assets?owner=${wallet}&order_direction=desc&limit=20&include_orders=false`;
+
+    const response = await fetch(url, options);
     const data = await response.json();
-    if (!response.ok) throw new Error(`${data.message}${response.status}`);
+
+    if (!response.ok) throw new Error(`${data.message} ${response.status}`);
+    console.log(data);
     return data;
   } catch (err) {
     throw err;
