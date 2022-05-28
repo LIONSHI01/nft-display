@@ -2,10 +2,13 @@ import { AJAX } from "./helper";
 
 export const state = {
   result: {
-    collection: "",
+    collection_name: "",
     image_url: "",
     token_id: "",
   },
 };
 
-const createSearchObject = function (data) {};
+export const createSearchObject = function (data) {
+  const { assets } = data.assets;
+  console.log(assets);
+};
